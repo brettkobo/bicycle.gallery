@@ -1,6 +1,5 @@
-var app = new Vue({
-  el: '#app',
-  data: {
+
+var bike_data = {
     items: [
             {
               title: '2015 Bombtrack Hook 2',
@@ -22,5 +21,34 @@ var app = new Vue({
             }
     ]  
   }
+
+var app = new Vue({
+  el: '#app',
+  data: bike_data,
+  methods:{
+    addBike: function (event) {
+      var title = this.title;
+      var description = this.description;
+      var image = this.image;
+      var tags = this.tags.split(",");
+      
+      bike_data.items.push(
+            {
+              title: title,
+              image: image,
+              description: description,
+              tags: tags
+            }
+        
+        )
+        
+      this.title = "";
+      this.description = "";
+      this.image = "";
+      this.tags = "";
+        
+    }
+      
+    }
 })
 
