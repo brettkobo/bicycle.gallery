@@ -1,72 +1,197 @@
 <html>
     <head>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+        
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css"/>
+        
+        <!-- template for the modal component -->
+        <script type="text/x-template" id="modal-template">
+          <transition name="modal">
+            <div class="modal-mask modal">
+              <div class="modal-wrapper">
+                <div class="modal-container">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload a Bicycle!</h5>
+                        <button type="button" class="close" @click="$emit('close')" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="form" role="form" autocomplete="off">
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Title:</label>
+                                <div class="col-lg-9">
+                                    <input id="title" v-model="title" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Description:</label>
+                                <div class="col-lg-9">
+                                    <input id="description" v-model="description" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Image URL:</label>
+                                <div class="col-lg-9">
+                                    <input id="image" v-model="image" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Tags:</label>
+                                <div class="col-lg-9">
+                                    <input id="tags" v-model="tags" class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Category</label>
+                                <div class="col-lg-9">
+                                    <select v-model="category" class="form-control" size="0">
+                                        <option value="touring-bike">Touring Bike</option>
+                                        <option value="phatbike">Phat Bike</option>
+                                        <option value="cyclocross">Cyclocross</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <h3>Components</h3>
+                            
+                            <div class="form-group row">
+                                <label class="col-lg-2 col-form-label form-control-label">Brand:</label>
+                                <div class="col-lg-4">
+                                    <input id="brand" v-model="brand" class="form-control component" type="text">
+                                </div>
+                                <label class="col-lg-2 col-form-label form-control-label">Frame:</label>
+                                <div class="col-lg-4">
+                                    <input id="frame" v-model="frame" class="form-control component" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-lg-2 col-form-label form-control-label">Wheelset:</label>
+                                <div class="col-lg-4">
+                                    <input id="wheelset" v-model="wheelset" class="form-control component" type="text">
+                                </div>
+                                <label class="col-lg-2 col-form-label form-control-label">Groupo:</label>
+                                <div class="col-lg-4">
+                                    <input id="groupo" v-model="groupo" class="form-control component" type="text">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-lg-2 col-form-label form-control-label">Brakes:</label>
+                                <div class="col-lg-4">
+                                    <input id="brakes" v-model="brakes" class="form-control component" type="text">
+                                </div>
+                            </div>    
+                       
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-12">
+                                    <button type="button" class="btn btn-primary" @click="addBike">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </script>
+        
     </head>
 
     <body>
-        <nav class="navbar navbar-light bg-light">
-          <span class="navbar-brand mb-0 h1">bicycle.gallery</span>
+        <nav class="navbar navbar-light bg-white">
+          <span class="navbar-brand">bicycle.gallery</span>
+              
+          <form class="form-inline m-0">
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+          
         </nav>
         
+        
          <div id="app" class="container">
-            
-            <div class="row mt-2 form-submit">
-                <h2>Submit a new bike!</h2>
-                <form>
-                     <div class="form-row">
-                        <div class="col">
-                          <input v-model="title" type="text" class="form-control" placeholder="Title">
-                        </div>
-                        <div class="col">
-                          <input v-model="description" type="text" class="form-control" placeholder="Description">
-                        </div>
-                        <div class="col">
-                          <input v-model="image" type="text" class="form-control" placeholder="Image URL">
-                        </div>
-                        <div class="col">
-                          <input v-model="tags" type="text" class="form-control" placeholder="Tags">
-                        </div>
-                        <div class="col">
-                          <button type="button" class="btn btn-primary" v-on:click="addBike">Submit</button>
-                        </div>
-                    </div>
-                </form>
+
+            <div id="upload-bike">
+              <button class="btn btn-primary rounded-circle upload-bike-btn" id="show-modal" @click="showModal = true">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-            
-        
-             <div v-for="item in items">
-                 
-                <div class="row mb-1 title">
-                      <h1> {{ item.title }} </h1>
-                </div>    
-                
-                <div class="row">
-                    <p><b>Description:</b>
-                </div>
-                
-                <div class="row mb-1 description">
-                    {{ item.description }} </p>
-                </div>
-                  
-                <div class="row mb-1 bike-picture">
-                    <img class="rounded mx-auto d-block thumbnail" v-bind:src="item.image"></img>
-                </div>
-                
-                <div class="row">
-                      <p><b>Tags:</b></p>
-                </div>          
-                <div class="row mb-1 tags">
-                    <span class="badge badge-pill badge-info mr-1" v-for="tag in item.tags">{{ tag }}</span>    
-                </div>
-                  
-                <hr>
-           </div>
-        </div>
-        
+              
     
-        <script src="js/app.js"></script>
+             <div class="card mt-3" v-for="item in items">
+                 
+                <div class="card-header title">
+                  <div class="row">
+                    <div class="col align-self-center">
+                      <h3> {{ item.title }} </h3>
+                    </div>
+                    <div class="col">
+                      <div class="float-right">
+                        <div class="bike-icon" v-bind:class="item.attributes.category"></div>
+                      </div>
+                    </div>
+                  </div>    
+                </div>
+                
+                <div class="card-body">
+                  <div class="row">
+                      <div class="col-lg-6 card-text mb-1 mx-auto align-self-center">
+                          <img class="rounded mx-auto d-block img-fluid" v-bind:src="item.image"></img>
+                      </div>
+                      
+                      <div class="col-lg-6 card-text mb-1">
+
+                          <h3>Description</h3>
+                          <p>{{ item.description }}</p>
+                          
+                          <h3>Componets</h3>
+                            <table class="table">
+                              <tr v-for="(value, key) in item.parts">
+                                <td class="font-weight-bold">{{ key }}:</td>
+                                <td>{{ value }}</td>
+                              </tr>  
+                            </table>  
+                      </div>
+                  </div>
+                  
+                   <div class="card-text text-muted">
+                    <small>
+                      <span>Upload by
+                      <a href="#">{{ item.user }}</a>
+                      on {{ item.added }}</span>
+                    </small>
+                  </div>
+                  
+                </div>
+              
+                <div class="card-footer">
+                    <span>
+                        <b>Tags:</b> 
+                    </span>
+                        <span class="badge badge-pill badge-info mr-1" v-for="tag in item.tags">{{ tag }}</span>    
+                </div>
+              </div>
+           
+           
+           <modal v-if="showModal" @close="showModal = false">
+          </div>
+        
+  <script src="js/app.js"></script>
     </body>
 </html>

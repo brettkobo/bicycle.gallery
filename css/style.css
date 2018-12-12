@@ -1,3 +1,79 @@
+body {
+  background-color: #eeeeee;
+     }
+
 .thumbnail{
-    height:350px;
+  height:350px;
+  width:100%;
+}
+
+#upload-bike {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.upload-bike-btn {
+  width: 60px;
+  height: 60px;
+}
+
+.bike-icon {
+  width: 65px;
+  height: 65px;
+}
+
+.phatbike {
+  background-image: url("https://cdn0.iconfinder.com/data/icons/types-of-bicycles/512/Fat_bike-64.png");
+  
+}
+
+.touring-bike {
+  background-image: url(https://cdn3.iconfinder.com/data/icons/bikecons/512/bikecons_touring-64.png);
+}
+
+.cyclocross {
+  background-image: url(https://cdn2.iconfinder.com/data/icons/bicycle-types/625/bicycle_cyclo_cross_cx-64.png);
+}
+
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 500px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-leave-active {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
