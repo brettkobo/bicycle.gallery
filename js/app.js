@@ -1,8 +1,8 @@
-
+var db_url = "https://data-bicyclegallery.wedeploy.io";
 var bike_data = [];
 
 WeDeploy
- .data("data-bicyclegallery.wedeploy.io")
+ .data(db_url)
  .get('bikes')
  .then(function(bikes) {
     bikes.forEach(function(bike){
@@ -63,7 +63,7 @@ Vue.component('modal', {
             };
             
         WeDeploy
-        .data("data-bicyclegallery.wedeploy.io")
+        .data(db_url)
         .create('bikes', upload_bike_data)
         .then(function() {
           console.log("Upload Successful")

@@ -13,7 +13,9 @@
 - Build pages for managing bike that have been uploaded.
 - Move project to Vue CLI and Webpack / NPM. 
 - Use Vue Router to create templates for new pages.
-- 
+- Add in componets to track comments and likes
+- Decide how site architecture should be like. Does each post have it owns page? What kind of detail does each section need?
+
 
 
 
