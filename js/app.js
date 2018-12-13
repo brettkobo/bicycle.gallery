@@ -1,3 +1,6 @@
+// Imports
+import { Feed } from './feed.js'
+
 var db_url = "https://data-bicyclegallery.wedeploy.io";
 var bike_data = [];
 
@@ -83,6 +86,9 @@ var app = new Vue({
   data: {
     items: bike_data,
     showModal: false
+  },
+  components: {
+    'feed': Feed
   }
 })
 
