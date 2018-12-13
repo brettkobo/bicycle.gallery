@@ -1,0 +1,6 @@
+[
+  {
+    "path": "/bikes/*",
+    "data": true
+  }
+]
