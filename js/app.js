@@ -1,7 +1,11 @@
 // Imports
-import { Feed } from './feed.js'
+import { Feed } from './feed.js';
+import { UploadModel } from './modal.js';
+import { NavTop, NavBottom } from './nav.js'
+import { BikeUpload } from './bike-upload.js'
+import { Home } from './home.js'
 
-var db_url = "https://data-bicyclegallery.wedeploy.io";
+const db_url = "https://data-bicyclegallery.wedeploy.io";
 var bike_data = [];
 
 WeDeploy
@@ -14,72 +18,40 @@ WeDeploy
 });
    
 
- 
+/*
+const HomeView = { template: '<div>Blank</div>' }
+const FeedView = { template: `<div>
+                                <div v-for="item in items">
+                                  <feed v-bind:item="item"></feed>
+                                </div>
+                              </div>`
+                }*/
+const GridView = { template: '<div>Foo Var Rah</div>' }
 
-Vue.component('modal', {
-  data: function () {
-    return {
-      title: '',
-      image: '',
-      description: '',
-      tags: '',
-      attributes: {
-        category: ''
-      },
-      parts: {
-        brand: '',
-        frame: '',
-        wheelset: '',
-        groupo: '',
-        brakes: ''
-      },
-      user: '',
-      added: ''
-    }
+
+// 2. Define some routes
+// Each route should map to a component. The "component" can
+// either be an actual component constructor created via
+// Vue.extend(), or just a component options object.
+// We'll talk about nested routes later.
+const routes = [
+  { path: '/', 
+  component: Home },
+  { path: '/feed', 
+    component: Feed, 
+    props: { default: true }
   },
-  template: '#modal-template',
-  methods: {
-      printdat() {
-        console.log("dat works"); 
-    },
-    
-    addBike() {
-      
-     
-     var upload_bike_data = {
-              title: this.title,
-              image: this.image,
-              description: this.description,
-              tags: this.tags.split(","),
-              attributes: {
-                category: this.attributes.category
-              },
-              parts: {
-                brand: this.parts.brand,
-                frame: this.parts.frame,
-                wheelset: this.parts.wheelset,
-                groupo: this.parts.groupo,
-                brakes: this.parts.brakes
-              },
-              user: "magicmen9",
-              added: new Date().toDateString()
-            };
-            
-        WeDeploy
-        .data(db_url)
-        .create('bikes', upload_bike_data)
-        .then(function() {
-          console.log("Upload Successful")
-        });
-        
-        app._data.items.push(upload_bike_data);
-        
-      this.$emit('close');
-        
-    }
-  }
-  
+  { path: '/grid', 
+  component: GridView }
+]
+
+// 3. Create the router instance and pass the `routes` option
+// You can pass in additional options here, but let's
+// keep it simple for now.
+const router = new VueRouter({
+  routes
 })
+
 
 var app = new Vue({
   el: '#app',
@@ -87,8 +59,13 @@ var app = new Vue({
     items: bike_data,
     showModal: false
   },
+  router,
   components: {
-    'feed': Feed
+    'feed': Feed,
+    'modal': UploadModel,
+    'nav-top': NavTop,
+    'nav-bottom': NavBottom,
+    'bike-upload': BikeUpload
   }
-})
+}).$mount('#app');
 

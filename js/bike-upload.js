@@ -1,13 +1,13 @@
 // This is the main feed for rendering bicycles.
-import { FeedTemplate } from './templates/feed-template.js'
+import { BikeUploadTemplate } from './templates/bike-upload-template.js'
 
 
 // Start by defining a constant, rather than using Vue.component()
-const Feed = {
-    template: FeedTemplate,
+const BikeUpload = {
+    template: BikeUploadTemplate,
+//    props: ['showModal'],
     methods: {},
     // This contains the JSON object that the component will render.
-    props: ['item'],
     data: function() {
         return {
             
@@ -15,4 +15,4 @@ const Feed = {
     }
 }
 
-export { Feed }
+export { BikeUpload }

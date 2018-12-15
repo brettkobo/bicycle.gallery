@@ -1,38 +1,67 @@
-       <transition name="modal">
-            <div class="modal-mask modal">
-              <div class="modal-wrapper">
-                <div class="modal-container">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Upload a Bicycle!</h5>
-                        <button type="button" class="close" @click="$emit('close')" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                             <div class="form-group">
-                                <label class="col-form-label">Title:</label>
-                                <input v-model="title" type="text" class="form-control" placeholder="">
-                              </div>
-                             <div class="form-group">
-                                <label class="col-form-label">Description:</label>
-                                <input v-model="description" type="text" class="form-control" placeholder="">
-                              </div>
-                             <div class="form-group">
-                                <label class="col-form-label">Image URL:</label>
-                                <input v-model="image" type="text" class="form-control" placeholder="">
-                              </div>
-                              <div class="form-group">
-                                <label class="col-form-label">Tags:</label>
-                                <input v-model="tags" type="text" class="form-control" placeholder="">
-                              </div>
-                              <button type="button" class="btn btn-primary" @click="addBike">Submit</button>
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Close</button>
-                      </div>
-                </div>
-              </div>
-            </div>
-          </transition>
+// This is the main feed for rendering bicycles.
+import { UploadModalTemplate } from './templates/modal-template.js'
+
+const db_url = "https://data-bicyclegallery.wedeploy.io";
+
+// Start by defining a constant, rather than using Vue.component()
+const UploadModel = {
+    template: UploadModalTemplate,
+    props: ['items'],
+    methods: {
+        addBike() {
+         var upload_bike_data = {
+                  title: this.title,
+                  image: this.image,
+                  description: this.description,
+                  tags: this.tags.split(","),
+                  attributes: {
+                    category: this.attributes.category
+                  },
+                  parts: {
+                    brand: this.parts.brand,
+                    frame: this.parts.frame,
+                    wheelset: this.parts.wheelset,
+                    groupo: this.parts.groupo,
+                    brakes: this.parts.brakes
+                  },
+                  user: "magicmen9",
+                  added: new Date().toDateString()
+                };
+                
+            WeDeploy
+            .data(db_url)
+            .create('bikes', upload_bike_data)
+            .then(function() {
+              console.log("Upload Successful");
+            });
+            
+            app.__vue__.items.push(upload_bike_data);
+            
+          this.$emit('close');
+        
+        }
+    },
+    // This contains the JSON object that the component will render.
+    data: function() {
+        return {
+              title: '',
+              image: '',
+              description: '',
+              tags: '',
+              attributes: {
+                category: ''
+              },
+              parts: {
+                brand: '',
+                frame: '',
+                wheelset: '',
+                groupo: '',
+                brakes: ''
+              },
+              user: '',
+              added: ''    
+        }
+    }
+}
+
+export { UploadModel }

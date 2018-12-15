@@ -9,134 +9,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- template for the modal component -->
-    <script type="text/x-template" id="modal-template">
-        <transition name="modal">
-            <div class="modal-mask modal">
-                <div class="modal-wrapper">
-                    <div class="modal-container">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Upload a Bicycle!</h5>
-                            <button type="button" class="close" @click="$emit('close')" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="form" role="form" autocomplete="off">
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Title:</label>
-                                    <div class="col-lg-9">
-                                        <input id="title" v-model="title" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Description:</label>
-                                    <div class="col-lg-9">
-                                        <input id="description" v-model="description" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Image URL:</label>
-                                    <div class="col-lg-9">
-                                        <input id="image" v-model="image" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Tags:</label>
-                                    <div class="col-lg-9">
-                                        <input id="tags" v-model="tags" class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Category</label>
-                                    <div class="col-lg-9">
-                                        <select v-model="attributes.category" class="form-control" size="0">
-                                        <option value="touring-bike">Touring Bike</option>
-                                        <option value="phatbike">Phat Bike</option>
-                                        <option value="cyclocross">Cyclocross</option>
-                                    </select>
-                                    </div>
-                                </div>
-
-                                <h3>Components</h3>
-
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label form-control-label">Brand:</label>
-                                    <div class="col-lg-4">
-                                        <input id="brand" v-model="parts.brand" class="form-control component" type="text">
-                                    </div>
-                                    <label class="col-lg-2 col-form-label form-control-label">Frame:</label>
-                                    <div class="col-lg-4">
-                                        <input id="frame" v-model="parts.frame" class="form-control component" type="text">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label form-control-label">Wheelset:</label>
-                                    <div class="col-lg-4">
-                                        <input id="wheelset" v-model="parts.wheelset" class="form-control component" type="text">
-                                    </div>
-                                    <label class="col-lg-2 col-form-label form-control-label">Groupo:</label>
-                                    <div class="col-lg-4">
-                                        <input id="groupo" v-model="parts.groupo" class="form-control component" type="text">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label form-control-label">Brakes:</label>
-                                    <div class="col-lg-4">
-                                        <input id="brakes" v-model="parts.brakes" class="form-control component" type="text">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label"></label>
-                                    <div class="col-lg-12">
-                                        <button type="button" class="btn btn-primary" @click="addBike">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </transition>
-    </script>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-white">
-        <span class="navbar-brand">bicycle.gallery</span>
-
-        <form class="form-inline m-0">
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </nav>
-
-    <div id="app" class="container">
-        <div class="upload-bike">
-            <button class="btn btn-primary rounded-circle upload-bike-btn" id="show-modal" @click="showModal = true">
-                <i class="fas fa-plus"></i>
-              </button>
-        </div>
+    <div id="app">
+        <nav-top></nav-top>
+        <div class="container">
+            
+            <bike-upload v-on:show-modal="showModal = true"> </bike-upload>
         
-        <div v-for="item in items">
-            <feed v-bind:item="item"></feed>
+            <router-view v-bind:item="items"></router-view>
+        
+            <modal v-if="showModal" @close="showModal = false">
         </div>
-
-        <modal v-if="showModal" @close="showModal = false">
+        <nav-bottom></nav-bottom>
     </div>
 
     <script type="module" src="js/app.js" crossorigin></script>

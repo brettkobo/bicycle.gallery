@@ -1,13 +1,12 @@
 // This is the main feed for rendering bicycles.
-import { FeedTemplate } from './templates/feed-template.js'
+import { HomeTemplate } from './templates/home-template.js'
 
 
 // Start by defining a constant, rather than using Vue.component()
-const Feed = {
-    template: FeedTemplate,
+const Home = {
+    template: HomeTemplate,
     methods: {},
     // This contains the JSON object that the component will render.
-    props: ['item'],
     data: function() {
         return {
             
@@ -15,4 +14,4 @@ const Feed = {
     }
 }
 
-export { Feed }
+export { Home }
