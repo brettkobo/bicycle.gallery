@@ -16,7 +16,7 @@ const NavTopTemplate = `
           <router-link class="nav-link" to="/grid">Grid</router-link>
         </li>
       </ul>
-      <form class="form-inline">
+      <form class="form-inline mb-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>

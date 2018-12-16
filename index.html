@@ -25,7 +25,7 @@
             
             <bike-upload v-on:show-modal="showModal = true"> </bike-upload>
         
-            <router-view v-bind:item="items"></router-view>
+            <router-view v-bind:item="items" v-bind:user="user"></router-view>
         
             <modal v-if="showModal" @close="showModal = false">
         </div>
