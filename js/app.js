@@ -12,7 +12,7 @@ const db_url = "https://data-bicyclegallery.wedeploy.io";
 var bike_data = [];
 
 
-var user = {
+/* var user = {
   username: "chillbro9",
   firstname: "Brett",
   lastname: "Kobold",
@@ -20,7 +20,9 @@ var user = {
   email: "brett@brett.com",
   createddate: "Dec 12th, 2018",
   userid: 8695830
-}
+} */
+
+
 
 WeDeploy
  .data(db_url)
@@ -65,12 +67,31 @@ const router = new VueRouter({
   routes
 })
 
+let bikeAuth = {
+    loggedIn: function () {
+      return !!localStorage.currentUser;
+    },
+    userData: function() {
+      if(!!localStorage.currentUser) {
+        return localStorage.currentUser;
+      } else {
+        return '';
+      }
+    },
+    getUser: function(userId) {
+        var data = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').getUser(userId);
+        var user_data = data.result_.getData();
+        return user_data;
+    }
+};
 
 var app = new Vue({
   el: '#app',
+  methods: {},
   data: {
     items: bike_data,
-    user: user,
+    loggedIn: bikeAuth.loggedIn(),
+    user: bikeAuth.userData(),
     showModal: false
   },
   router,

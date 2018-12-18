@@ -1,49 +1,45 @@
 import { SignUpTemplate, WelcomeTemplate } from './templates/login-template.js'
 
 
-
-
-// Start by defining a constant, rather than using Vue.component()
 const SignUp = {
     template: SignUpTemplate,
     methods: {
-        signIn() {
-              auth.signInWithEmailAndPassword(user.email.value, user.password.value)
-              .then(function() {
-                router.push({ path: '/welcome' });
-              })
-              .catch(function() {
-                alert('Sign-in failed. Try another email/password.');
-              });
-            },
         submitForm() {
-
             var auth = WeDeploy.auth('auth-bicyclegallery.wedeploy.io');
+            
+              var email = this.email;
+              var password = this.password;
             
               auth.createUser({
                 email: this.email,
                 name: this.name,
+                age: 23,
                 password: this.password
               })
-              .then(function() {
-                    auth.signInWithEmailAndPassword(this.email, this.password)
-                      .then(function() {
-                        router.push({ path: '/welcome' });
-                      })
-                      .catch(function() {
-                        alert('Sign-in failed. Try another email/password.');
-                      });
-                user.reset();
-              })
-              .catch(function() {
-                alert('Sign-up failed. Try another email.');
-                user.reset();
+              .then(function(){
+                auth.signInWithEmailAndPassword(email, password);
               });
-              console.log(this.email + this.name + this.password + "worked");
-                },
+              
+              var currentUser = auth.currentUser
+              
+              if(currentUser) {
+                this.$root.$data.user = currentUser;  
+                this.$router.replace({ path: '/welcome' });
+              }
+              
+              console.log("User accounted created " + this.email + " " + this.password)
+              
+            
+              
+              console.log("Signed in with" + this.email);
+            },
         },            
     data: function() {
         return {
+          email: '',
+          name: '',
+          password: '',
+          age: ''
         }
     },
 }
