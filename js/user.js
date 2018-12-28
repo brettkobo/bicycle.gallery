@@ -29,19 +29,19 @@ function getUser(userId) {
 
 // Start by defining a constant, rather than using Vue.component()
 const User = {
+    name: 'user',
     template: UserTemplate,
     methods: {
         getUser: function(userId) {
             var data = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').getUser(userId);
-            
             return data;
      }
     },
     props: ['item'],
     created: function() {
         var temp = this.getUser(this.$route.params.id.toString());
-        console.log(temp.result_);
-        this.user =   temp;
+        //console.log(temp.result_);
+        this.user = temp;
     },
     data: function() {
         return {

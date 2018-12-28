@@ -8,13 +8,13 @@
 
 ### Todos:
 - ~~Build grid view bikes for search results.~~
-- Create advance search menu for tags, componets, description, etc.
 - ~~Create user accounts for authentication and admin.~~
-- Build pages for managing bike that have been uploaded.
 - ~~Move project to Vue CLI and Webpack / NPM.~~ 
 - ~~Use Vue Router to create templates for new pages.~~
-- Add in componets to track comments and likes
 - ~~Decide how site architecture should be like. Does each post have it owns page? What kind of detail does each section need?~~
+- Create advance search menu for tags, componets, description, etc.
+- Build pages for managing bike that have been uploaded.
+- Add in componets to track comments and likes
 - Finsh making template for creating account.
 - Revist functions that check if user is logged in. Currently looking if currentUser exists.
 - Add `user_id` to the bikes collection to make it possible to search bikes by user.

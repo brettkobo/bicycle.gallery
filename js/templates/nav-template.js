@@ -16,7 +16,11 @@ const NavTopTemplate = `
           <router-link class="nav-link" to="/grid">Grid</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/signup">Sign Up</router-link>
+          <router-link class="nav-link" :to="'/user/' + user.id" v-if="auth.loggedIn">Your Garage</router-link>
+          <router-link class="nav-link" to="/signup" v-else>Sign Up</router-link>
+        </li>
+        <li class="nav-item">
+          <button class='btn-secondary' v-if="auth.loggedIn" v-on:click="signOut()">Sign Out</button>
         </li>
       </ul>
       <form class="form-inline mb-0">
@@ -27,10 +31,10 @@ const NavTopTemplate = `
   </nav>`;
   
 const NavBottomTemplate = `
-<footer class="page-footer font-small bg-white">
-  <div class="footer-copyright text-center py-3">
-      <p>Made with <3 by Brett</p>
-  </div>
+<footer class="footer bg-white">
+      <div class="container">
+        <span>Made with <3 by Brett</span>
+      </div>
 </footer>
 `
   

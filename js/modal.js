@@ -8,8 +8,24 @@ const UploadModel = {
     template: UploadModalTemplate,
     props: ['items'],
     methods: {
+      uuid() {
+              var seed = Date.now();
+              if (window.performance && typeof window.performance.now === "function") {
+                  seed += performance.now();
+              }
+          
+              var uuid = 'xxxxxxxx'.replace(/[xy]/g, function (c) {
+                  var r = (seed + Math.random() * 16) % 16 | 0;
+                  seed = Math.floor(seed/16);
+          
+                  return (c === 'x' ? r : r & (0x3|0x8)).toString(16).toUpperCase();
+              });
+          	
+              return uuid;
+          },
         addBike() {
          var upload_bike_data = {
+                  bikeid: this.uuid(),
                   title: this.title,
                   image: this.image,
                   description: this.description,
@@ -24,7 +40,10 @@ const UploadModel = {
                     groupo: this.parts.groupo,
                     brakes: this.parts.brakes
                   },
-                  user: "magicmen9",
+                  user: {
+                    username: this.$root.$data.user.username,
+                    userid: this.$root.$data.user.id
+                  },
                   added: new Date().toDateString()
                 };
                 
@@ -35,7 +54,8 @@ const UploadModel = {
               console.log("Upload Successful");
             });
             
-            app.__vue__.items.push(upload_bike_data);
+            // NOT GOOD! Refactor this using vuex because you shouldn't access the root data...
+            this.$root.$data.item.push(upload_bike_data);
             
           this.$emit('close');
         

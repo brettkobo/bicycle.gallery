@@ -1,12 +1,12 @@
 // JavaScript File
-const FeedTemplate = `
+const BikeViewTemplate = `
 <div>
-        <div class="card mb-3 mt-3" v-for="item in item">
+        <div class="card mb-3 mt-3">
         
                     <div class="card-header title">
                         <div class="row">
                             <div class="col-lg-9 align-self-center">
-                                <h3> <router-link :to="'/bike/' + item.bikeid">{{ item.title }}</router-link> </h3>
+                                <h3> {{ item.title }} </h3> <span> {{ item.bikeid }} </span>
                             </div>
                             <div class="col-lg-3">
                                 <div class="float-right">
@@ -60,4 +60,4 @@ const FeedTemplate = `
 </div>                
 `;
         
-export { FeedTemplate }
+export { BikeViewTemplate }

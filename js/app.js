@@ -6,10 +6,11 @@ import { NavTop, NavBottom } from './nav.js'
 import { BikeUpload } from './bike-upload.js'
 import { Home } from './home.js'
 import { User } from './user.js'
-import { SignUp, Welcome } from './login.js'
+import { SignUp, Welcome } from './sign-up.js'
+import { BikeView } from './bike-view.js'
 
-const db_url = "https://data-bicyclegallery.wedeploy.io";
-var bike_data = [];
+
+
 
 
 /* var user = {
@@ -21,18 +22,6 @@ var bike_data = [];
   createddate: "Dec 12th, 2018",
   userid: 8695830
 } */
-
-
-
-WeDeploy
- .data(db_url)
- .get('bikes')
- .then(function(bikes) {
-    bikes.forEach(function(bike){
-	    bike_data.push(bike);
-	});
-});
-   
 
 
 const routes = [
@@ -52,6 +41,10 @@ const routes = [
   { path: '/user/:id',
     name: 'user',
     component: User 
+  },
+   { path: '/bike/:bikeid',
+    name: 'bike',
+    component: BikeView 
   },
   { path: '/signup',
     name: 'sign-up',
@@ -73,7 +66,7 @@ let bikeAuth = {
     },
     userData: function() {
       if(!!localStorage.currentUser) {
-        return localStorage.currentUser;
+        return JSON.parse(localStorage.currentUser);
       } else {
         return '';
       }
@@ -81,18 +74,23 @@ let bikeAuth = {
     getUser: function(userId) {
         var data = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').getUser(userId);
         var user_data = data.result_.getData();
-        return user_data;
+        return JSON.parse(user_data);
     }
 };
+
+
 
 var app = new Vue({
   el: '#app',
   methods: {},
   data: {
-    items: bike_data,
-    loggedIn: bikeAuth.loggedIn(),
+//    items: bike_data,
+    auth: {
+      loggedIn: bikeAuth.loggedIn(),  
+    },
     user: bikeAuth.userData(),
-    showModal: false
+    showModal: false,
+    item: ''
   },
   router,
   components: {

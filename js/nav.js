@@ -1,15 +1,17 @@
-// This is the main feed for rendering bicycles.
 import { NavTopTemplate, NavBottomTemplate } from './templates/nav-template.js'
 
-
-// Start by defining a constant, rather than using Vue.component()
 const NavTop = {
     template: NavTopTemplate,
-    methods: {},
-    // This contains the JSON object that the component will render.
+    props: ['auth', 'user'],
+    methods: {
+        signOut() {
+            WeDeploy.auth('auth-bicyclegallery.wedeploy.io').signOut();
+            this.$root.$data.auth.loggedIn = false;
+            this.$router.replace({ path: '/' });
+        }
+    },
     data: function() {
         return {
-            
         }
     }
 }
@@ -17,7 +19,6 @@ const NavTop = {
 const NavBottom = {
     template: NavBottomTemplate,
     methods: {},
-    // This contains the JSON object that the component will render.
     data: function() {
         return {
             

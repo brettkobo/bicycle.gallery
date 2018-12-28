@@ -23,12 +23,12 @@
 
 <body>
     <div id="app">
-        <nav-top></nav-top>
+        <nav-top v-bind:auth="auth" v-bind:user="user"></nav-top>
         <div class="container">
             
-            <bike-upload v-on:show-modal="showModal = true"> </bike-upload>
+            <bike-upload v-on:show-modal="showModal = true"  v-if="auth.loggedIn"> </bike-upload>
         
-            <router-view v-bind:item="items" v-bind:user="user"></router-view>
+            <router-view></router-view>
         
             <modal v-if="showModal" @close="showModal = false">
         </div>
