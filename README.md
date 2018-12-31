@@ -7,20 +7,36 @@
 **Built On:** Vue.js and Wedeploy
 
 ### Todos:
-- ~~Build grid view bikes for search results.~~
-- ~~Create user accounts for authentication and admin.~~
-- ~~Move project to Vue CLI and Webpack / NPM.~~ 
-- ~~Use Vue Router to create templates for new pages.~~
-- ~~Decide how site architecture should be like. Does each post have it owns page? What kind of detail does each section need?~~
-- Create advance search menu for tags, componets, description, etc.
-- Build pages for managing bike that have been uploaded.
-- Add in componets to track comments and likes
-- Finsh making template for creating account.
-- Revist functions that check if user is logged in. Currently looking if currentUser exists.
-- Add `user_id` to the bikes collection to make it possible to search bikes by user.
-- Create 3 or 4 test users and upload about 15 or so bikes for each user.
+
+#### Feed
 - Add created and method.function pattern into each componet for the "build" of the page. Don't need to pass props from main app file. Data can be contained in the componet.
 
+#### Search
+- Create advance search menu for tags, componets, description, etc.
+- Use the grid componet for the results
+- Add in ability to search using Google like searches with "category:fatback" or "groupo:ultegra".
+
+#### User
+- ~~Finsh making template for creating account.~~
+- ~~Revist functions that check if user is logged in. Currently looking if currentUser exists.~~
+- Allow for users to get notifications when someone likes their bike and comments.
+- Build pages for managing bike that have been uploaded.
+
+#### Bike Upload
+- Add in all the componets for the bike upload.
+
+#### Bike Data
+- ~~Add `user_id` to the bikes collection to make it possible to search bikes by user.~~
+- Create fields for optional componets.
+- Create 3 or 4 test users and upload about 15 or so bikes for each user.
+
+#### Bike View
+- Add ability to scoll through pictures and have lightbox.
+- Add in componets to track comments and likes.
+
+#### Comments & Likes
+- Create collections for comments and likes, data structure something like comment, user id, user name, added, bike id
+- Data structure for likes something like, user id, bike id, date added
 
 ### Features:
 - Create account for users to manage their bike collection.
@@ -30,6 +46,7 @@
 - Like and comment on invidual bikes.
 - View invidual bikes on their own page.
 - View invidual user accounts to view thier collection.
+
 
 
 ### Future:

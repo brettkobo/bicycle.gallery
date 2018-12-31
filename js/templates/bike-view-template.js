@@ -53,10 +53,15 @@ const BikeViewTemplate = `
                     </div>
         
                     <div class="card-footer">
-                        <a href="#" class="card-link"><i class="far fa-heart"></i></i> Like</a>
+                        <like v-bind:item="item"></like>
                         <a href="#" class="card-link"><i class="far fa-comment"></i> Comment</a>
                     </div>
+                    
+                    
                 </div>
+        
+                <comments v-bind:item="item"></comments>
+                
 </div>                
 `;
         

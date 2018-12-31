@@ -8,20 +8,8 @@ import { Home } from './home.js'
 import { User } from './user.js'
 import { SignUp, Welcome } from './sign-up.js'
 import { BikeView } from './bike-view.js'
-
-
-
-
-
-/* var user = {
-  username: "chillbro9",
-  firstname: "Brett",
-  lastname: "Kobold",
-  avatar: "https://media.licdn.com/dms/image/C5603AQHSUTky4gaEQw/profile-displayphoto-shrink_200_200/0?e=1550102400&v=beta&t=AofwoMUNgrh-XyyUo7_xPrnto63HpD3tmVDgGRscWb4",
-  email: "brett@brett.com",
-  createddate: "Dec 12th, 2018",
-  userid: 8695830
-} */
+import { Upload } from './upload.js'
+import { Search } from './search.js'
 
 
 const routes = [
@@ -53,6 +41,16 @@ const routes = [
   { path: '/welcome',
     name: 'welcome',
     component: Welcome
+  },
+  {
+    path: '/upload',
+    name: 'upload',
+    component: Upload
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: Search
   }
 ]
 

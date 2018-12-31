@@ -1,5 +1,7 @@
 // This is the main feed for rendering bicycles.
 import { BikeViewTemplate } from './templates/bike-view-template.js'
+import { Comments } from './comments.js'
+import { Like } from './like.js'
 
 
 // Start by defining a constant, rather than using Vue.component()
@@ -30,6 +32,10 @@ const BikeView = {
         return {
             item: ''
         }
+    },
+    components: {
+    'comments': Comments,
+    'like' : Like
     }
 }
 

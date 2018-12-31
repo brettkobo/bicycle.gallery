@@ -1,6 +1,6 @@
 const GridTemplate = `
 <div class="card-columns">
-    <div class="card mb-3" v-for="item in item">
+    <div class="card mb-3" v-for="item in results">
     
                         <div class="card-header title">
                             <div class="row">

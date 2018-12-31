@@ -51,6 +51,52 @@ body {
   background-image: url(https://cdn2.iconfinder.com/data/icons/bicycle-types/625/bicycle_cyclo_cross_cx-64.png);
 }
 
+be-comment-block { margin-bottom: 50px !important; border: 1px solid #edeff2; border-radius: 2px; padding: 50px 70px; }
+@media screen and (max-width: 767px) { .be-comment-block { padding: 15px; padding-bottom: 30px; } }
+.be-comment-content { margin-left: 80px; }
+.be-comment-content { margin-left: 80px; }
+
+.be-img-comment { width: 60px; height: 60px; float: left; margin-bottom: 15px; }
+
+.be-comment-content { margin-left: 80px; }
+
+.comments-title { font-size: 16px; color: #262626; margin-bottom: 15px; font-family: 'Conv_helveticaneuecyr-bold'; }
+
+.about-comment-block { font-size: 12px; color: #b4b7c1; margin-bottom: 50px; }
+
+.be-signup-link { color: #0d58c8 !important; margin: 0 2px; font-family: 'Conv_helveticaneuecyr-bold'; font-size: 10px; }
+
+.be-signup-link:hover { color: #0d58c8 !important; }
+
+.be-comment-name { font-size: 13px; font-family: 'Conv_helveticaneuecyr-bold'; }
+
+.be-comment-time { font-size: 11px; color: #b4b7c1; }
+
+.be-comment-text { font-size: 13px; line-height: 18px; color: #7a8192; display: block; background: #f6f6f7; border: 1px solid #edeff2; padding: 15px 20px 20px 20px; }
+
+.be-comment-content span { display: inline-block; width: 49%; margin-bottom: 15px; }
+
+.be-comment-content a { color: #383b43; }
+
+.be-comment-content a:hover { color: #0D58C8; }
+
+.be-comment-time { text-align: right; }
+
+.be-comment-info { margin-bottom: 15px; }
+
+.be-ava-comment { width: 60px; height: 60px; border-radius: 50%; }
+
+@media screen and (max-width: 767px) { .be-comment-content { margin: 0; }
+  .be-comment-content span { width: 100%; text-align: center; display: block; }
+  .be-img-comment { width: 100%; text-align: center; } }
+
+.be-comment-time .fa { font-size: 18px; transform: translateY(2px); -webkit-transform: translateY(2px); -moz-transform: translateY(2px); -ms-transform: translateY(2px); margin-right: 8px; }
+
+.be-comment:not(:last-child) { margin-bottom: 30px; }
+
+
+
+
 .modal-mask {
   position: fixed;
   z-index: 9998;

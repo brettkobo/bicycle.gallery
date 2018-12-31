@@ -25,7 +25,7 @@ const NavTopTemplate = `
       </ul>
       <form class="form-inline mb-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <router-link tag="button" to="/search" class="btn btn-outline-primary my-2 my-sm-0"> Search </router-link>
       </form>
     </div>
   </nav>`;

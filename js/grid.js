@@ -5,10 +5,15 @@ import { GridTemplate } from './templates/grid-template.js'
 // Start by defining a constant, rather than using Vue.component()
 const Grid = {
     template: GridTemplate,
+    props: ['results'],
     methods: {},
-    // This contains the JSON object that the component will render.
-//    props: ['item'],
     created: function() {
+        console.log(this.results)
+    },
+    // This contains the JSON object that the component will render.
+    // props: ['items'],
+    
+/*    created: function() {
         
         const db_url = "https://data-bicyclegallery.wedeploy.io";
         var bike_data = [];
@@ -28,9 +33,10 @@ const Grid = {
         this.$root.$data.item = bike_data;
         this.item = this.$root.$data.item 
     },
+*/    
     data: function() {
         return {
-            item: '',
+            items: this.results
         }
     }
 }

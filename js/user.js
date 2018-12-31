@@ -1,32 +1,6 @@
 import { UserTemplate } from './templates/user-template.js'
 import { Grid } from './grid.js';
 
-/*
-let bikeAuth = {
-    loggedIn: function () {
-      return !!localStorage.currentUser;
-    },
-    userData: function() {
-      if(!!localStorage.currentUser) {
-        return localStorage.currentUser;
-      } else {
-        return '';
-      }
-    },
-    getUser: function(userId) {
-        var data = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').getUser(userId);
-        var user_data = data.result_.data_;
-        return user_data;
-    }
-};
-
-
-function getUser(userId) {
-        var user_d = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').getUser(userId);
-        return user_d.result_;
-}
-*/
-
 // Start by defining a constant, rather than using Vue.component()
 const User = {
     name: 'user',

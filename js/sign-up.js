@@ -2,6 +2,7 @@ import { SignUpTemplate, WelcomeTemplate } from './templates/sign-up-template.js
 
 
 const SignUp = {
+    name: 'sign-up',
     template: SignUpTemplate,
     methods: {
         submitForm() {
