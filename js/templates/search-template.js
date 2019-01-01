@@ -1,6 +1,6 @@
 const SearchTemplate = `
 <div>
-    <div class="row">
+    <div class="row my-3">
       <div class="input-group mx-auto">
         <input type="text" v-model='searchValue' class="form-control" placeholder="Search this blog">
         <div class="input-group-append">
@@ -11,7 +11,8 @@ const SearchTemplate = `
       </div>
     </div>
     
-    <div>
+    <div class="row my-3">
+        <div v-if='Object.keys(results).length === 0'> There are no results! </div>
         <grid :results="results"></grid>
     </div>    
     

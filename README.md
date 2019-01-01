@@ -24,6 +24,12 @@
 
 #### Bike Upload
 - Add in all the componets for the bike upload.
+- Give option for "simple" or "advance" upload.
+- Simple will include title, description, and some attributes.
+- Advance will contain all parts of that is.
+- Create different path ways for multi-step step form.
+- Advance flow will look something like Title + Desc -> Pictures -> Attributes -> Frame -> Wheels -> Drive Train -> Cockpick -> Upload
+- Simple flow will look something like Title + Desc -> Pictures -> Attributes -> Upload 
 
 #### Bike Data
 - ~~Add `user_id` to the bikes collection to make it possible to search bikes by user.~~

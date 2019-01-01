@@ -3,14 +3,14 @@ const FeedTemplate = `
 <div>
         <div class="card mb-3 mt-3" v-for="item in item">
         
-                    <div class="card-header title">
+                    <div class="card-header title melon-red ">
                         <div class="row">
                             <div class="col-lg-9 align-self-center">
-                                <h3> <router-link :to="'/bike/' + item.bikeid">{{ item.title }}</router-link> </h3>
+                                <h3> <router-link class="text-light" :to="'/bike/' + item.bikeid">{{ item.title }}</router-link> </h3>
                             </div>
                             <div class="col-lg-3">
                                 <div class="float-right">
-                                    <div class="bike-icon" v-bind:class=""></div>
+                                    <div class="bike-icon" v-bind:class="item.attributes.category"></div>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@ const FeedTemplate = `
                                 <img class="rounded mx-auto d-block img-fluid" v-bind:src="item.image"></img>
                             </div>
         
-                            <div class="col-lg-6 card-text mb-1">
+                            <div class="col-lg-6 card-text mb-1 vertical-line">
         
                                 <h3>Description</h3>
                                 <p>{{ item.description }}</p>

@@ -1,0 +1,93 @@
+{
+        "image": "",
+        "added": "",
+        "bikeid": "",
+        "parts": {
+            "cockpick": {
+                "handlebars": "",
+                "stem": "",
+                "seatpost": "",
+                "saddle": "",
+                "pedals": "",
+                "headset": "",
+                "grips": ""
+            }
+            "drivetrain": {
+                "groupo": "",
+                "frontDerailur": "",
+                "rearDetailur": "",
+                "shifters": "".
+                "brakeLevers": "",
+                "brakes": "",
+                "cranks": "",
+                "chain": "",
+                "bottomBracket": ""
+            }
+            "wheels": { 
+                "wheelSize": "",
+                "hubs": "",
+                "rims": "",
+                "tires": ""
+            }
+            "frame": {
+                "frame": "",
+                "frameMaterial": "",
+                "fork": "",
+                "forkMaterial": "", 
+                "rearShock": ""
+            }
+        },
+        "description": "",
+        "attributes": {
+            "category": "",
+            "subCategory": "", 
+            "year": "",
+            "brand": "",
+            "model": "",
+            "weight": "",
+            "size": ""
+            
+        },
+        "id": "",
+        "title": "",
+        "user": {
+            "userId": "",
+            "userName": ""
+            "userAvatar": ""
+        },
+        "tags": []
+    }
+    
+Type of Bikes
+ - Mountian Bikes
+    - Type of Suspension
+        - Front Suspectio
+        - Rigid
+        - Full Suspection
+    - Category    
+        - Dirt Jumper
+        - Endro
+        - Cross Country
+        - Downhil
+        - Single Speed
+ - Touring Bikes
+    - Category
+        - Long Distance Touring
+        - Light Touring Bike
+        - Cargo Bike
+- Comfort / Hybrid Bike
+    - Category
+        - Gla
+- Cyclrocross
+- Gravel Grinder
+- Road Bike
+- Commuter Bike
+- Folding Bike
+- Fat Bike
+- Triathlon / Time Trial Bike
+- BMX Bike
+- Track / Fixed Gear
+- Tandam
+- Cruiser
+- Penny Farther
+- Unicycle

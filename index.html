@@ -24,15 +24,19 @@
 <body>
     <div id="app">
         <nav-top v-bind:auth="auth" v-bind:user="user"></nav-top>
-        <div class="container">
+        <div class="container auto-height">
             
             <bike-upload v-on:show-modal="showModal = true"  v-if="auth.loggedIn"> </bike-upload>
         
             <router-view></router-view>
         
             <modal v-if="showModal" @close="showModal = false">
+        
+        
+        
         </div>
         <nav-bottom></nav-bottom>
+        
     </div>
 
     <script type="module" src="js/app.js" crossorigin></script>

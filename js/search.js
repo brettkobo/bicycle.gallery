@@ -19,12 +19,19 @@ const Search = {
             this.results = data;
         });
         
+//        if(Object.keys(this.results).length === 0) {
+//            return this.hasResults = false
+//        } else
+//            return this.hasResults = true
+        
+        
         }
     },
     data: function() {
         return {
             searchValue: '',
-            results: ''
+            results: [],
+            hasResults: false
         }
     },
     components: {
