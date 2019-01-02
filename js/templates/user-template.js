@@ -5,7 +5,7 @@ const UserTemplate = `
         <div class="card">
             <div class="card-body">
                 <div class="card-text">
-                    <img class=" mx-auto d-block img-fluid rounded-circle mb-3 mx-aut" height="160" width="160" src="http://yatheatre.com/wp-content/uploads/2018/09/Unknown-Profile-Picture-Instagram-facebookanon-appadvice-.jpg" alt="">
+                    <img class=" mx-auto d-block img-fluid rounded-circle mb-3 mx-aut" height="160" width="160" src="https://pngimage.net/wp-content/uploads/2018/06/profile-logo-png-1.png" alt="">
                     <h3 class="text-center"> Username: {{ user.result_.username }} </h3>
                     <p class="text-center">User ID: {{ $route.params.id }} </p>
                     <p class="text-center">Email: {{ user.result_.email }} </p>
@@ -22,7 +22,8 @@ const UserTemplate = `
     </div>
     
     <div class="col-md-9">
-        <grid></grid>
+        <div v-if='Object.keys(results).length === 0'> There are no results! </div>
+        <grid :results="results"></grid>
     </div>
 </div>
 `

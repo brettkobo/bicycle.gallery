@@ -8,7 +8,7 @@ import { Home } from './home.js'
 import { User } from './user.js'
 import { SignUp, Welcome } from './sign-up.js'
 import { BikeView } from './bike-view.js'
-import { Upload } from './upload.js'
+import { Upload } from './upload-new.js'
 import { Search } from './search.js'
 
 

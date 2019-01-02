@@ -1,5 +1,6 @@
 // This is the main feed for rendering bicycles.
 import { FeedTemplate } from './templates/feed-template.js'
+import { Like } from './like.js'
 
 
 // Start by defining a constant, rather than using Vue.component()
@@ -23,16 +24,19 @@ const Feed = {
         	});
         });
         console.log("Created from Feed has been run.");
-        console.log(bike_data);
-        console.log(this.$root.$data)
-        this.$root.$data.item = bike_data;
-        this.item = this.$root.$data.item 
+        //console.log(bike_data);
+        //console.log(this.$root.$data)
+        
+        this.item = bike_data;
     },
     data: function() {
         return {
             item: ''
         }
-    }
+    },
+    components: {
+        'like' : Like
+        }
 }
 
 export { Feed }

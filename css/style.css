@@ -1,15 +1,15 @@
 body {
   background-color: #eeeeee;
   margin-bottom: 60px;
-  height: 100%;
 }
-     
-#app{
-  height:100%;
-}     
+
+#app {
+  height: 100%
+}
 
 .auto-height {
   height: auto;
+  min-height: 100%;
 }
      
 .thumbnail{
@@ -17,17 +17,16 @@ body {
   width:100%;
 }
 
-/*.card {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}*/
-
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
 }
+
+/* Bike Upload */
+
 .upload-bike {
   position: fixed;
   bottom: 30px;
@@ -40,9 +39,17 @@ body {
   height: 60px;
 }
 
-.bike-icon {
-  width: 65px;
-  height: 65px;
+.
+
+
+
+
+
+
+/* Color Schemes */
+
+.white{
+  color:white;
 }
 
 .mellow-yellow {
@@ -94,19 +101,30 @@ nav .navbar-nav li a:hover{
 }
 
 .vertical-line {  
-  border-left: 1px solid Gainsboro;
+border-left: 1px solid Gainsboro;
 }
 
+@media(max-width:990px){
+.vertical-line {  
+  border-left: hidden;
+  }
+}
 
-/*
-Yellow - #F8E9A1
-Red - #F76C6C
-Light Blue - #A8D0E6
-Blue - #374785
-Dark Blue - #24305E
-Mint Green - #7DCCBE
-Nice Pink - #FBBFCA
-*/
+.bottom-buttons {
+  bottom: -20px;
+  left: 30px;
+  position: absolute;
+}
+
+.int-buttons {
+  height: 45px;
+  width: 45px;
+}
+
+.bike-icon {
+  width: 65px;
+  height: 65px;
+}
 
 .phatbike {
   background-image: url("https://cdn0.iconfinder.com/data/icons/types-of-bicycles/512/Fat_bike-64.png");
@@ -120,6 +138,8 @@ Nice Pink - #FBBFCA
 .cyclocross {
   background-image: url(https://cdn2.iconfinder.com/data/icons/bicycle-types/625/bicycle_cyclo_cross_cx-64.png);
 }
+
+/* Comment CSS */
 
 be-comment-block { margin-bottom: 50px !important; border: 1px solid #edeff2; border-radius: 2px; padding: 50px 70px; }
 @media screen and (max-width: 767px) { .be-comment-block { padding: 15px; padding-bottom: 30px; } }
@@ -165,46 +185,3 @@ be-comment-block { margin-bottom: 50px !important; border: 1px solid #edeff2; bo
 .be-comment:not(:last-child) { margin-bottom: 30px; }
 
 
-
-
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .5);
-  display: table;
-  transition: opacity .3s ease;
-}
-
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 500px;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
-  transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}

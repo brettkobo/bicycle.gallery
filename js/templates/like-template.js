@@ -1,4 +1,4 @@
 const LikeTemplate = `
-<span @click="submitLike"><i class="far fa-heart"></i> {{ likes }} </span>
+<button class="btn btn-danger rounded-circle int-buttons" @click="submitLike"><i class="far fa-heart text-white"></i></button>
 `
 export { LikeTemplate };

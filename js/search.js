@@ -31,7 +31,6 @@ const Search = {
         return {
             searchValue: '',
             results: [],
-            hasResults: false
         }
     },
     components: {

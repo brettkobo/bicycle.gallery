@@ -47,15 +47,22 @@ const BikeViewTemplate = `
                         </div>
         
                         <div class="card-text">
-                            <span class="badge badge-pill badge-info mr-1" v-for="tag in item.tags">{{ tag }}</span>
+                            <span class="badge badge-pill badge-info mr-1 float-right" v-for="tag in item.tags">{{ tag }}</span>
                         </div>
         
                     </div>
         
-                    <div class="card-footer">
-                        <like v-bind:item="item"></like>
-                        <a href="#" class="card-link"><i class="far fa-comment"></i> Comment</a>
-                    </div>
+
+                        <div class="bottom-buttons">
+                            <like v-bind:item="item"></like>
+                            <button class="btn btn-primary rounded-circle int-buttons"> 
+                                <a href="#" class="" ><i class="far fa-comment text-white""></i></a>
+                            </button>
+                            <button class="btn btn-primary rounded-circle int-buttons"> 
+                                <a href="#" class="" ><i class="fas fa-share-alt text-white""></i></a>
+                            </button>
+                        </div>    
+
                     
                     
                 </div>

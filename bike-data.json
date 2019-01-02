@@ -1,7 +1,13 @@
 {
-        "image": "",
-        "added": "",
-        "bikeid": "",
+        "title": "",
+        "description": "",
+        "images": [],
+        "id"
+        "bikeId": "",
+        "dateAdded": "",
+        "dateEdited": "",
+        "id": "",
+        "tags": [],
         "parts": {
             "cockpick": {
                 "handlebars": "",
@@ -11,7 +17,7 @@
                 "pedals": "",
                 "headset": "",
                 "grips": ""
-            }
+            },
             "drivetrain": {
                 "groupo": "",
                 "frontDerailur": "",
@@ -22,22 +28,28 @@
                 "cranks": "",
                 "chain": "",
                 "bottomBracket": ""
-            }
+            },
             "wheels": { 
                 "wheelSize": "",
                 "hubs": "",
                 "rims": "",
                 "tires": ""
-            }
+            },
             "frame": {
                 "frame": "",
                 "frameMaterial": "",
                 "fork": "",
                 "forkMaterial": "", 
                 "rearShock": ""
+            },
+            "accessories": {
+                "bell": "",
+                "fenders": "",
+                "frontRack": "",
+                "rearRack": ""
+                
             }
         },
-        "description": "",
         "attributes": {
             "category": "",
             "subCategory": "", 
@@ -46,16 +58,12 @@
             "model": "",
             "weight": "",
             "size": ""
-            
         },
-        "id": "",
-        "title": "",
         "user": {
             "userId": "",
             "userName": ""
             "userAvatar": ""
-        },
-        "tags": []
+        }
     }
     
 Type of Bikes
@@ -92,3 +100,6 @@ Type of Bikes
 - Penny Farther
 - Unicycle
 - Tricycle
+
+
+Main Category
