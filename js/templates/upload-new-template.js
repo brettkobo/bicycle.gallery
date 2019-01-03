@@ -1,4 +1,4 @@
-const UploadTemplate = `
+const UploadOldTemplate = `
 <div>
     <div>
         <h5>Upload a Bicycle!</h5>
@@ -82,7 +82,42 @@ const UploadTemplate = `
 </div>
 `                    
 
-const UploadStepOneTemplate = `
+const UploadTemplate = `
+<div>
+    <h2> This is the {{ $route.params.id }} view.</h2>
+    <router-view></router-view>
+</div>
+`
+
+const UploadPictureTemplate = `
+<div class="card">
+
+    <div class="card-title minty-green">
+        <h2>Bicycle Picture Upload</h2>
+    </div>
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="https://cdn.shopify.com/s/files/1/0116/6732/products/chief_dark_bl_1024x1024.png?v=1479315448"></img>
+            </div>
+            <div class="col-lg-6">
+                 <file-pond
+                         name="test"
+                        ref="pond"
+        label-idle="Drop files here..."
+        allow-multiple="true"
+        accepted-file-types="image/jpeg, image/png"
+        server="/api"
+        v-bind:files="myFiles"
+        v-on:init="handleFilePondInit"></file-pond>
+            </div>
+        </div>
+    </div>    
+</div>
+`
+
+const UploadAttributesTemplate = `
 <div class="card">
 
     <div class="card-title minty-green">
@@ -136,9 +171,10 @@ const UploadStepOneTemplate = `
     </div>    
 </div>
 `
-const UploadStepZeroTemplate = `
+
+const UploadTypeTemplate = `
 <div>
-    <div class="row h-100 justify-content-center ml-auto d-flex align-items-center mt-4 mt-md-0" v-if="formPosition === 'start'">
+    <div class="row h-100 justify-content-center ml-auto d-flex align-items-center mt-4 mt-md-0">
         <div class="col-lg-3">
             <div class="card mx-auto">
                 <div class="card-title text-center mellow-yellow">
@@ -146,7 +182,7 @@ const UploadStepZeroTemplate = `
                 </div>
                 <div class="card-body text-center">
                     <p> Use this form if you would like to only upload a few attributes about your bike </p>
-                    <button class="btn btn-danger" @click="formChange('simple')">Upload</button>
+                    <router-link class="btn btn-danger" :to="{name: 'upload-photo'}" tag="button">Upload</router-link>
                 </div>
             </div>    
         </div>
@@ -158,25 +194,14 @@ const UploadStepZeroTemplate = `
                 </div>
                 <div class="card-body text-center">
                     <p> Use this form if you would like upload all attributes about your bike like the frame, wheels, and components. </p>
-                    <button class="btn btn-danger" @click="formChange('advance')">Upload</button>
+                    <router-link class="btn btn-danger" :to="{name: 'upload-photo'}" tag="button">Upload</router-link>
                 </div>
             </div>    
         </div>
     </div>
-    
-    <div v-if="formPosition === 'simple'">
-        This is the <b>simplest</b> countdown!
-    </div>
-    
-    <div v-if="formPosition === 'advance'">
-        This is the <b>advance</b> countdown!
-    </div>
-    
-
-
 </div>
 `
 
 
 
-export { UploadStepZeroTemplate, UploadStepOneTemplate };
+export { UploadTemplate, UploadTypeTemplate, UploadAttributesTemplate, UploadPictureTemplate };

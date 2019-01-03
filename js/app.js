@@ -8,7 +8,7 @@ import { Home } from './home.js'
 import { User } from './user.js'
 import { SignUp, Welcome } from './sign-up.js'
 import { BikeView } from './bike-view.js'
-import { Upload } from './upload-new.js'
+import { Upload, UploadType, UploadAttributes, UploadPicture } from './upload-new.js'
 import { Search } from './search.js'
 
 
@@ -43,9 +43,18 @@ const routes = [
     component: Welcome
   },
   {
-    path: '/upload',
+    path: '/upload/',
     name: 'upload',
-    component: Upload
+    component: Upload,
+    children: [
+      { path: 'type', component: UploadType },
+      { path: 'attributes', 
+        name: 'upload-attributes', 
+        component: UploadAttributes },
+      { path: 'photo',
+        name: 'upload-photo', 
+        component: UploadPicture }
+      ]
   },
   {
     path: '/search',

@@ -1,12 +1,12 @@
 // This is the main feed for rendering bicycles.
-import { UploadStepZeroTemplate, UploadStepOneTemplate } from './templates/upload-new-template.js'
+import { UploadTemplate, UploadTypeTemplate, UploadAttributesTemplate, UploadPictureTemplate } from './templates/upload-new-template.js'
 
 const db_url = "https://data-bicyclegallery.wedeploy.io";
 
 // Start by defining a constant, rather than using Vue.component()
 const Upload = {
     name: 'upload',
-    template: UploadStepZeroTemplate,
+    template: UploadTemplate,
     props: ['items'],
     methods: {
       uuid() {
@@ -95,4 +95,14 @@ const Upload = {
     }
 }
 
-export { Upload }
+const UploadType = { template: UploadTypeTemplate }
+const UploadAttributes = { template: UploadAttributesTemplate, name:"upload-attributes"}
+const UploadPicture = { 
+  template: UploadPictureTemplate, 
+  name:"upload-photo",
+  components: {
+            FilePond: vueFilePond.default(FilePondPluginImagePreview)
+  }
+}
+
+export { Upload, UploadType, UploadAttributes, UploadPicture}
