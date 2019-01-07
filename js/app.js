@@ -63,6 +63,18 @@ const routes = [
   }
 ]
 
+// define a mixin object
+const datMixin = {
+  methods: {
+        unCamelCase(text) {
+         var temp = text
+         .replace(/([A-Z])/g, ' $1')
+         .replace(/^./, function(str){ return str.toUpperCase(); })
+         return(temp)
+        }
+  }
+}
+
 const router = new VueRouter({
   routes
 })
@@ -101,12 +113,10 @@ var app = new Vue({
   },
   router,
   components: {
-    'feed': Feed,
-    'modal': UploadModel,
     'nav-top': NavTop,
     'nav-bottom': NavBottom,
     'bike-upload': BikeUpload,
-    'grid': Grid
   }
 }).$mount('#app');
 
+export { datMixin };

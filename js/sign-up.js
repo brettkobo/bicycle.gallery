@@ -5,51 +5,23 @@ const SignUp = {
     name: 'sign-up',
     template: SignUpTemplate,
     methods: {
-        submitForm() {
-            var auth = WeDeploy.auth('auth-bicyclegallery.wedeploy.io');
+        submitForm: async function() {
+              var auth = WeDeploy.auth('auth-bicyclegallery.wedeploy.io');
             
-              auth.createUser({
+              await auth.createUser({
                 email: this.email,
                 username: this.username,
                 age: Math.round(Math.random()*100),
                 password: this.password
               })
-              .then(() => {
-                auth.signInWithEmailAndPassword(this.email, this.password);
-                console.log("Authentication Worked");
-//                var isAuth = true;
-//                return(isAuth);
-              })
-              .then(() => {
-                  setTimeout(() => {
-                    var user = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').currentUser.data_;
-                    this.$root.$data.user = user;
-                    this.$root.$data.auth.loggedIn = true;
-                    this.$router.replace({ path: '/welcome' });
-                }, 1000);
-              });
-          
-/*            var user_data = WeDeploy.auth('auth-bicyclegallery.wedeploy.io').currentUser;
-            console.log(user_data);
+      
+              await auth.signInWithEmailAndPassword(this.email, this.password);
+              console.log("Authentication Worked");
               
-              //console.log(currentUser)
-              auth.onSignIn(() => {
-                this.$root.$data.user = user;
-                this.$root.$data.auth.loggedIn = true;
-              })
-              
-              
-              var currentUser = localStorage.currentUser
-              
-              if(isAuth) {
-                this.$root.$data.user = currentUser;
-                this.$root.$data.auth.loggedIn = true;
-                console.log("Current user set to Root");
-                this.$router.replace({ path: '/welcome' });
-              }
-*/
-              //console.log("User accounted created " + this.email + " " + this.password)
-              //console.log("Signed in with" + this.email);
+              var user = await WeDeploy.auth('auth-bicyclegallery.wedeploy.io').currentUser.data_;
+              this.$root.$data.user = user;
+              this.$root.$data.auth.loggedIn = true;
+              this.$router.replace({ path: '/welcome' });
             },
         },            
     data: function() {

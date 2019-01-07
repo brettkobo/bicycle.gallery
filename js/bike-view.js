@@ -1,14 +1,29 @@
 // This is the main feed for rendering bicycles.
-import { BikeViewTemplate } from './templates/bike-view-template.js'
+import { BikeViewTemplate, BikePartDropdownTemplate } from './templates/bike-view-template.js'
 import { Comments } from './comments.js'
 import { Like } from './like.js'
+import { datMixin } from './mixin.js'
 
+
+const BikePartDropdown = {
+    name: 'bike-part-dropdown',
+    template: BikePartDropdownTemplate,
+    props: ['parts', 'partID', 'show'],
+    mixins: [datMixin],
+    data: function() {
+        return {
+//            partID: this.partID
+        }
+    }
+}
 
 // Start by defining a constant, rather than using Vue.component()
 const BikeView = {
     name: 'bike-view',
     template: BikeViewTemplate,
-    methods: {},
+    mixins: [datMixin],
+    methods: {
+    },
     // This contains the JSON object that the component will render.
     // props: ['item'],
     created: function() {
@@ -19,8 +34,8 @@ const BikeView = {
         
         WeDeploy
          .data(db_url)
-         .where('bikeid', '=', bikeid)
-         .get('bikes')
+         .where('bikeId', '=', bikeid)
+         .get('bikes-oth')
          .then((bike) => {
             this.item = bike[0];
         });
@@ -30,13 +45,18 @@ const BikeView = {
     },
     data: function() {
         return {
-            item: ''
+            item: '',
+            showCollapse: false
+            
         }
     },
     components: {
     'comments': Comments,
-    'like' : Like
+    'like' : Like,
+    'bike-part-dropdown' : BikePartDropdown
     }
 }
+
+
 
 export { BikeView }

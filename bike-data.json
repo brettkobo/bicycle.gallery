@@ -2,14 +2,14 @@
         "title": "",
         "description": "",
         "images": [],
-        "id"
+        "id":
         "bikeId": "",
         "dateAdded": "",
         "dateEdited": "",
         "id": "",
         "tags": [],
         "parts": {
-            "cockpick": {
+            "cockpit": {
                 "handlebars": "",
                 "stem": "",
                 "seatpost": "",
@@ -47,7 +47,6 @@
                 "fenders": "",
                 "frontRack": "",
                 "rearRack": ""
-                
             }
         },
         "attributes": {
@@ -101,5 +100,70 @@ Type of Bikes
 - Unicycle
 - Tricycle
 
+// Red Rider
 
-Main Category
+{
+        "title": "The Red Robit",
+        "description": "Currently this is my favorite bike. I use to to explore the backroads of Indiana and Michigan! It rolls over everything.",
+        "images": "https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/43342703_10217121102530122_5028885599528943616_n.jpg?_nc_cat=104&_nc_ht=scontent-ort2-2.xx&oh=6d9720ef56c21abba30608ad3927e1b9&oe=5CCF789B",
+        "bikeId": "1E578Z02",
+        "dateAdded": "January 6th, 2019",
+        "dateEdited": "January 6th, 2019",
+        "tags": ['red robit', 'bombtrek', 'for days'],
+        "parts": {
+            "cockpit": {
+                "handlebars": "Salsa WoodChipper",
+                "stem": "Dimesions 90mm",
+                "seatpost": "Thompson Silver",
+                "saddle": "Brooks Classis",
+                "pedals": "Red Platform",
+                "headset": "FSA",
+                "grips": "SRAM Cork Red"
+            },
+            "drivetrain": {
+                "groupo": "SRAM Rival Cyclrocross",
+                "frontDerailur": "SRAM Rival",
+                "rearDetailur": "SRAM Rival",
+                "shifters": "SRAM Rival 1",
+                "brakeLevers": "SRAM Rival 1",
+                "brakes": "TRP Spyre",
+                "cranks": "SRAM Rival 1, 44t",
+                "chain": "SRAM",
+                "bottomBracket": "SRAM GXP"
+            },
+            "wheels": { 
+                "wheelSize": "700c",
+                "hubs": "DT Swiss R23db Spline disc",
+                "rims": "DT Swiss R23db Spline disc",
+                "tires": "Clement X'Plot MSO 40mmx700c "
+            },
+            "frame": {
+                "frame": "Bombtrack",
+                "frameMaterial": "Columbus Cromor double-butted chromoly",
+                "fork": "BT Bikes Hook 2 carbon/alloy disc",
+                "forkMaterial": "Carbon", 
+                "rearShock": null
+            },
+            "accessories": {
+                "bell": null,
+                "fenders": null,
+                "frontRack": null,
+                "rearRack": "Topeak Explorer Bicycle Rack"
+            }
+        },
+        "attributes": {
+            "category": "cyclrocross",
+            "subCategory": "Gravel Grinder", 
+            "year": "2015",
+            "brand": "Bombtrack",
+            "model": "Hook 2",
+            "weight": "22lb",
+            "size": "56cm"
+        },
+        "user": {
+            "userId": "7967856769789099",
+            "userName": "The Brett",
+            "userAvatar": "https://scontent-ort2-2.xx.fbcdn.net/v/t1.0-9/23316775_10214429168833462_792470022321564087_n.jpg?_nc_cat=103&_nc_ht=scontent-ort2-2.xx&oh=dcddce01b1065e584caf0d90466ed4cf&oe=5C928ADC"
+        }
+    }
+
