@@ -2,6 +2,7 @@
 import { BikeViewTemplate, BikePartDropdownTemplate } from './templates/bike-view-template.js'
 import { Comments } from './comments.js'
 import { Like } from './like.js'
+import { SocialButtons } from './social-buttons.js'
 import { datMixin } from './mixin.js'
 
 
@@ -53,7 +54,8 @@ const BikeView = {
     components: {
     'comments': Comments,
     'like' : Like,
-    'bike-part-dropdown' : BikePartDropdown
+    'bike-part-dropdown' : BikePartDropdown,
+    'social-buttons': SocialButtons
     }
 }
 

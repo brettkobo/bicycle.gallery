@@ -34,21 +34,30 @@ const BikeViewTemplate = `
         
                             <div class="col-lg-6 card-text mb-1">
         
-                                <h3>Description</h3>
+                                <h3>Description:</h3>
                                 <p>{{ item.description }}</p>
         
-                                <h3>Components</h3>
+                                <h3>Components:</h3>
                                 <table class="table">
                                     <tr v-for="(value, key) in item.attributes" v-if="value !== null">
                                         <td class="font-weight-bold">{{ unCamelCase(key) }}:</td>
                                         <td>{{ value }}</td>
                                     </tr>
                                 </table>
+                                <h3>Tags:</h3> 
+                                    <span class="badge badge-pill badge-info mr-1" v-for="tag in item.tags">{{ tag }}</span>
                             </div>
                         </div>
         
                         <div class="card-text">
-                            <span class="badge badge-pill badge-info mr-1 float-right" v-for="tag in item.tags">{{ tag }}</span>
+                            <b-btn class="float-right"
+                              @click="showCollapse = !showCollapse" 
+                              :class="showCollapse ? 'collapsed' : null"
+                              variant="outline-secondary">
+                                Display All Parts
+                             </b-btn>
+                        
+                            
                         </div>
                         
                     </div>    
@@ -58,13 +67,6 @@ const BikeViewTemplate = `
                           <!-- elements to collapse -->
                           <div role="tablist">
                           
-                              <b-btn 
-                              @click="showCollapse = !showCollapse" 
-                              :class="showCollapse ? 'collapsed' : null"
-                              variant="outline-secondary">
-                                Display All Parts
-                              </b-btn>
-                                
                                 <bike-part-dropdown 
                                 partID="frame" 
                                 :parts="item.parts.frame"
@@ -99,20 +101,10 @@ const BikeViewTemplate = `
                             
                           </div>
                     
-                      <div class="mb-5"> </div>
+                      <div class="mb-2"> </div>
                     
-        
-
-                        <div class="bottom-buttons mt-5">
-                            <like v-bind:item="item"></like>
-                            <button class="btn btn-primary rounded-circle int-buttons"> 
-                                <a href="#" class="" ><i class="far fa-comment text-white""></i></a>
-                            </button>
-                            <button class="btn btn-primary rounded-circle int-buttons"> 
-                                <a href="#" class="" ><i class="fas fa-share-alt text-white""></i></a>
-                            </button>
-                        </div>    
-
+                      <social-buttons v-bind:item="item"></social-buttons>
+                      
                 </div>
         
                 <comments v-bind:item="item"></comments>
@@ -121,9 +113,10 @@ const BikeViewTemplate = `
 `;
 
 const BikePartDropdownTemplate = `
- <b-card no-body>
-    <b-card-header header-tag="header" class="p-0" role="tab">
-      <b-btn block href="#" v-b-toggle="partID" variant="outline-secondary">+ {{ unCamelCase(partID) }}</b-btn>
+ <b-card no-body class='rounded-0 border-0'>
+    <b-card-header header-tag="header" class="toggle-hover rounded-0 border-0" v-b-toggle="partID" role="tab">
+        <span class='font-weight-bold p-3'> <i class="fas fa-plus"></i>   {{ unCamelCase(partID) }}</span>
+<!--      <b-btn block href="#" v-b-toggle="partID" variant="outline-secondary">+ {{ unCamelCase(partID) }}</b-btn> -->
     </b-card-header>
     <b-collapse :id="partID" role="tabpanel" v-model="show">
       <b-card-body>

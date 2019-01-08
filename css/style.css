@@ -97,6 +97,10 @@ nav .navbar-nav li a:hover{
 border-left: 1px solid Gainsboro;
 }
 
+.toggle-hover:hover{
+  background-color: lightgrey;
+}
+
 @media(max-width:990px){
 .vertical-line {  
   border-left: hidden;
@@ -105,7 +109,6 @@ border-left: 1px solid Gainsboro;
 
 .bottom-buttons {
   bottom: -20px;
-  left: 30px;
   position: absolute;
 }
 

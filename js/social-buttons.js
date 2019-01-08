@@ -1,24 +1,34 @@
-import { LikeTemplate } from './templates/like-template.js'
+import { SocialButtonTemplate } from './templates/social-buttons-template.js'
+import { Like } from './like.js'
 
-const Like = {
-    name: 'like',
-    template: LikeTemplate,
+const SocialButtons = {
+    name: 'social-buttons',
+    template: SocialButtonTemplate,
     props: ['item'],
     created: function() {
-        
-        
-/*        WeDeploy
+
+        WeDeploy
          .data('https://data-bicyclegallery.wedeploy.io')
          .where('bikeId', '=', this.item.id.toString())
          .count()
          .get('likes')
          .then((data) => {
-        	 this.likes = data;
+        	 this.likeCount = data;
         });
-*/        
-        console.log("# of likes have been loaded.");
+        
+        WeDeploy
+         .data('https://data-bicyclegallery.wedeploy.io')
+         .where('bikeId', '=', this.item.id.toString())
+         .count()
+         .get('comments')
+         .then((data) => {
+        	 this.commentCount = data;
+        });
     },
-    methods: {
+    components:{
+        'like': Like
+    },
+   methods: {
         submitLike: function(){
            
            var likeData = {
@@ -28,7 +38,7 @@ const Like = {
                 bikeId: this.item.id
            };
            
-            this.likes += 1
+            this.likeCount += 1
             
             WeDeploy
                 .data('https://data-bicyclegallery.wedeploy.io')
@@ -36,14 +46,15 @@ const Like = {
                 .then(function() {
                   console.log("Like Uploaded Successfully");
                 });
-        }
-    },
-    // This contains the JSON object that the component will render.
-    data: function() {
+            }
+        },
+        data: function() {
         return {
-            likes: '',
-        }
+            likeCount: '',
+            commentCount: '',
+            pageviewCount: Math.round(Math.random()*1000)
+            }
     }
-}
+}    
 
-export { Like }
+export { SocialButtons }
