@@ -1,5 +1,5 @@
 // This is the main feed for rendering bicycles.
-import { UploadTemplate, UploadTypeTemplate, UploadAttributesTemplate, UploadPictureTemplate } from './templates/upload-new-template.js'
+import { UploadTemplate, UploadTypeTemplate, UploadTabTemplate, UploadAttributesTemplate, UploadPictureTemplate } from './templates/upload-new-template.js'
 
 const db_url = "https://data-bicyclegallery.wedeploy.io";
 
@@ -96,13 +96,20 @@ const Upload = {
 }
 
 const UploadType = { template: UploadTypeTemplate }
-const UploadAttributes = { template: UploadAttributesTemplate, name:"upload-attributes"}
+const UploadTab = { 
+  template: UploadTabTemplate,
+  methods: {
+    onComplete: function(){
+        alert('Yay. Done!');
+   }
+  }};
+const UploadAttributes = { template: UploadAttributesTemplate, name:"upload-attributes"};
 const UploadPicture = { 
   template: UploadPictureTemplate, 
   name:"upload-photo",
   components: {
             FilePond: vueFilePond.default(FilePondPluginImagePreview)
   }
-}
+};
 
-export { Upload, UploadType, UploadAttributes, UploadPicture}
+export { Upload, UploadType, UploadTab, UploadAttributes, UploadPicture};

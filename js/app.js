@@ -2,14 +2,14 @@
 import { Feed } from './feed.js';
 import { Grid } from './grid.js';
 import { UploadModel } from './modal.js';
-import { NavTop, NavBottom } from './nav.js'
-import { BikeUpload } from './bike-upload.js'
-import { Home } from './home.js'
-import { User } from './user.js'
-import { SignUp, Welcome } from './sign-up.js'
-import { BikeView } from './bike-view.js'
-import { Upload, UploadType, UploadAttributes, UploadPicture } from './upload-new.js'
-import { Search } from './search.js'
+import { NavTop, NavBottom } from './nav.js';
+import { BikeUpload } from './bike-upload.js';
+import { Home } from './home.js';
+import { User } from './user.js';
+import { SignUp, Welcome } from './sign-up.js';
+import { BikeView } from './bike-view.js';
+import { Upload, UploadType, UploadTab, UploadAttributes, UploadPicture } from './upload-new.js';
+import { Search } from './search.js';
 
 
 const routes = [
@@ -47,13 +47,18 @@ const routes = [
     name: 'upload',
     component: Upload,
     children: [
-      { path: 'type', component: UploadType },
+      { path: 'type', 
+      component: UploadType },
       { path: 'attributes', 
         name: 'upload-attributes', 
         component: UploadAttributes },
       { path: 'photo',
         name: 'upload-photo', 
-        component: UploadPicture }
+        component: UploadPicture },
+      { path: 'tabs',
+        name: 'upload-tabs',
+        component: UploadTab
+      }
       ]
   },
   {
@@ -98,7 +103,7 @@ let bikeAuth = {
 };
 
 
-
+Vue.use(VueFormWizard)
 var app = new Vue({
   el: '#app',
   methods: {},

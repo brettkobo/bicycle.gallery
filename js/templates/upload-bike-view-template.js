@@ -1,5 +1,5 @@
 
-const BikeViewTemplate = `
+const UploadBikeViewTemplate = `
 <div>
         <div class="card mb-3 mt-3">
         
